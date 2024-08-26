@@ -10,3 +10,18 @@ export const authenticate = async (username: string, password: string) => {
         throw error;
     }
 };
+
+
+
+export const register = async (username: string, password: string, email: string) => {
+    try {
+        const response = await axios.post('/register', {
+            username,
+            password,
+            email,
+        });
+        return response.data;
+    } catch (error) {
+        throw new Error('Registration failed');
+    }
+};
