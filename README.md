@@ -29,6 +29,4 @@ Ensure you have the following installed on your machine:
 
 ### Running the Development Server
 
-To start the development server, run:
-
-npm run serve
+npm run dev

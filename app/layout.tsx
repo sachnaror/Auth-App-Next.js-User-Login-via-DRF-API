@@ -1,7 +1,8 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css"; // Correct the path
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata = {
   title: "Auth App",
