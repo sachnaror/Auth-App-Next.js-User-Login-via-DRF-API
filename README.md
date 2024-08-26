@@ -1,4 +1,6 @@
-# Auth App
+# Auth App (Next.js)
+
+Login via DRF APIs (Django Rest Framework) user authentication
 
 This is an authentication application built with [Next.js](https://nextjs.org/). It provides a simple login form and demonstrates the use of client-side state management and navigation.
 
@@ -14,7 +16,7 @@ Ensure you have the following installed on your machine:
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/auth-app.git
+   git clone https://github.com/sachnaror/auth-app.git
    cd auth-app
    ```
 
