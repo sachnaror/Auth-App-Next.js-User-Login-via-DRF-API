@@ -1,14 +1,13 @@
-"use client";
+import React from 'react';
+import Users from '../components/Users';
 
-import LoginForm from '../components/LoginForm';
-
-const Page = () => {
+const HomePage: React.FC = () => {
   return (
     <div>
-      <h1>Login Page</h1>
-      <LoginForm />
+      <h1>Welcome to the Home Page</h1>
+      <Users />
     </div>
   );
 };
 
-export default Page;
+export default HomePage;

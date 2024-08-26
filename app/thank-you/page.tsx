@@ -1,8 +1,14 @@
-export default function ThankYou() {
+import React from 'react';
+
+const ThankYouPage: React.FC = () => {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center p-24">
-            <h1 className="text-4xl font-bold mb-4">Thank You</h1>
-            <p className="text-xl">You have successfully logged in!</p>
-        </main>
+        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+            <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+                <h2 className="text-2xl font-bold mb-6 text-center">Thank You</h2>
+                <p className="text-center">You have successfully logged in.</p>
+            </div>
+        </div>
     );
-}
+};
+
+export default ThankYouPage;

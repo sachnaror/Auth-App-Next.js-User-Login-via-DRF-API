@@ -1,22 +1,49 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
-import { authenticate } from '../services/auth';
+import React, { useEffect, useState } from 'react';
 
-const LoginForm = () => {
+const LoginForm: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [users, setUsers] = useState([]);
     const router = useRouter();
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/users/');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setUsers(data);
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        };
+
+        fetchUsers();
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        try {
-            await authenticate(username, password);
+        setError('');
+
+        const response = await fetch('http://127.0.0.1:8000/api/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        });
+
+        if (response.ok) {
+            // Redirect to the "Thank You" page
             router.push('/thank-you');
-        } catch (error) {
-            setError('You are not a registered user');
+        } else {
+            setError('Invalid username or password');
         }
     };
 
@@ -57,6 +84,14 @@ const LoginForm = () => {
                     </button>
                     {error && <p className="text-sm text-red-500">{error}</p>}
                 </form>
+                <div>
+                    <h3 className="text-xl font-bold mt-6">Users</h3>
+                    <ul>
+                        {users.map((user: any) => (
+                            <li key={user.id}>{user.username}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
     );
