@@ -30,3 +30,6 @@ Ensure you have the following installed on your machine:
 ### Running the Development Server
 
 npm run dev
+
+
+#this was created to connect and fed users and passwords from django rest framework https://github.com/sachnaror/auth_project
